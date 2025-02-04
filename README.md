@@ -1,6 +1,6 @@
 # Todo Fullstack Application
 
-Welcome to the **Todo Fullstack** project! This project is a full-stack application with a **Vue 3 frontend** and a **Node.js backend**. The app allows users to manage their todo lists efficiently with a seamless, modern UI and scalable backend API.
+Welcome to the **Todo Fullstack** project! This project is a full-stack application with a **Vue 3 frontend** and a **Bun.js backend**. The app allows users to manage their todo lists efficiently with a seamless, modern UI and scalable backend API.
 
 ## Table of Contents
 
@@ -54,12 +54,12 @@ This will start the Vue application in development mode with hot-reloading enabl
 
 ## Backend Setup
 
-The backend provides the API endpoints to manage your todo list. It integrates with a database and exposes routes for creating, reading, updating, and deleting todos.
+The backend provides the API endpoints to manage your todo list. It integrates with a mongoDB database and exposes routes for creating, reading, updating, and deleting todos.
 
 ### Prerequisites
 
 - **Node.js** (v18 or higher)
-- **npm** or **yarn**
+- **bun** or **yarn** or **pnpm** or **npm**
 
 ### Installation
 
@@ -95,6 +95,7 @@ This will start the backend server, listening on the configured port (I used 300
 - **Backend**:
   - Bun
   - Express
+  - Mongoose
 
 ## Installation
 
@@ -117,7 +118,7 @@ Follow these steps to get the application running locally.
    - Backend:
      ```bash
      cd ../backend
-     npm install
+     bun install
      ```
 
 3. Run the frontend and backend servers:
@@ -127,7 +128,7 @@ Follow these steps to get the application running locally.
      ```
    - Backend:
      ```bash
-     npm run dev
+     bun run dev
      ```
 
 Your full-stack application should now be up and running locally!
