@@ -77,7 +77,7 @@ The backend provides the API endpoints to manage your todo list. It integrates w
 
 3. To start the backend server, run:
    ```bash
-   bun run dev
+   bun server.ts
    ```
 
 This will start the backend server, listening on the configured port (I used 3000).
@@ -128,7 +128,7 @@ Follow these steps to get the application running locally.
      ```
    - Backend:
      ```bash
-     bun run dev
+     bun server.ts
      ```
 
 Your full-stack application should now be up and running locally!
