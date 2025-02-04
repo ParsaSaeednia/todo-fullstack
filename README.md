@@ -72,15 +72,15 @@ The backend provides the API endpoints to manage your todo list. It integrates w
 2. Install the dependencies:
 
    ```bash
-   npm install
+   bun install
    ```
 
 3. To start the backend server, run:
    ```bash
-   npm run dev
+   bun run dev
    ```
 
-This will start the backend server, listening on the configured port.
+This will start the backend server, listening on the configured port (I used 3000).
 
 ## Technologies
 
