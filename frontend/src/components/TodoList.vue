@@ -62,7 +62,7 @@
     if (!todoStore.parameters.title.trim()) return;
     const response = await ApiService.createTodo(todoStore.parameters);
     todoStore.list.push(response.data);
-    todoStore.parameters = { title: "", completed: false }; 
+    todoStore.parameters = { title: "", completed: false };
   };
 
   const updateTodo = async (todo: TodoModel) => {

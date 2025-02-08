@@ -1,12 +1,9 @@
 import { defineStore } from "pinia";
-import type { TodoViewModel } from "@/models/TodoModel";
+import { TodoModel } from "@/models/TodoModel";
 
 export const useTodoStore = defineStore("todo", {
-  state: (): TodoViewModel => ({
-    list: [],
-    parameters: {
-      title: "",
-      completed: false,
-    },
+  state: () => ({
+    list: [] as TodoModel[],
+    parameters: { title: "", completed: false } as Pick<TodoModel, "completed" | "title">,
   }),
 });

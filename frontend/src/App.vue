@@ -1,7 +1,9 @@
 <template>
+  <Loading />
   <TodoList />
 </template>
 
 <script setup lang="ts">
-import TodoList from './components/TodoList.vue';
+  import Loading from "./components/Loading.vue";
+  import TodoList from "./components/TodoList.vue";
 </script>

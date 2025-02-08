@@ -1,8 +1,8 @@
 import axios from "axios";
+import { useGeneralStore } from "@/store/GeneralStore";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
-  timeout: 10000,
+  baseURL: "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
   },
@@ -10,21 +10,26 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    const loadingStore = useGeneralStore();
+    loadingStore.startLoading();
     return config;
   },
   (error) => {
+    const loadingStore = useGeneralStore();
+    loadingStore.stopLoading();
     return Promise.reject(error);
   }
 );
 
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    const loadingStore = useGeneralStore();
+    loadingStore.stopLoading();
+    return response;
+  },
   (error) => {
-    console.error("API Error:", error.response?.data || error.message);
+    const loadingStore = useGeneralStore();
+    loadingStore.stopLoading();
     return Promise.reject(error);
   }
 );
