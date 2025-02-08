@@ -1,6 +1,7 @@
 import api from "@/configs/axios";
 import type { TodoModel } from "@/models/TodoModel";
-export default class todoService {
+
+class todoService {
   getTodos() {
     return api.get<TodoModel[]>("/todos");
   }
@@ -15,3 +16,5 @@ export default class todoService {
     return api.delete(`/todos/${id}`);
   }
 }
+
+export default new todoService();
