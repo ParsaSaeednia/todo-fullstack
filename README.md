@@ -88,6 +88,7 @@ This will start the backend server, listening on the configured port (I used 300
 
   - Vue 3
   - Vite
+  - Pinia
   - Axios
   - Bootstrap 5
   - TypeScript
