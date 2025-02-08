@@ -47,32 +47,15 @@
 
 <script setup lang="ts">
   import { onMounted } from "vue";
-  import type { TodoModel } from "@/models/TodoModel";
-  import ApiService from "@/services/TodoService";
   import { useTodoStore } from "@/store/TodoStore";
+  import type { TodoModel } from "@/models/TodoModel";
 
   const todoStore = useTodoStore();
 
-  const fetchTodos = async () => {
-    const response = await ApiService.getTodos();
-    todoStore.list = response.data;
-  };
-
-  const addTodo = async () => {
-    if (!todoStore.parameters.title.trim()) return;
-    const response = await ApiService.createTodo(todoStore.parameters);
-    todoStore.list.push(response.data);
-    todoStore.parameters = { title: "", completed: false };
-  };
-
-  const updateTodo = async (todo: TodoModel) => {
-    await ApiService.updateTodo(todo._id, { completed: todo.completed, title: todo.title });
-  };
-
-  const deleteTodo = async (id: string) => {
-    await ApiService.deleteTodo(id);
-    todoStore.list = todoStore.list.filter((todo: TodoModel) => todo._id !== id);
-  };
+  const fetchTodos = async (): Promise<void> => await todoStore.fetchTodos();
+  const addTodo = async (): Promise<void> => await todoStore.addTodo();
+  const updateTodo = async (todo: TodoModel): Promise<void> => await todoStore.updateTodo(todo);
+  const deleteTodo = async (id: string): Promise<void> => await todoStore.deleteTodo(id);
 
   onMounted(fetchTodos);
 </script>

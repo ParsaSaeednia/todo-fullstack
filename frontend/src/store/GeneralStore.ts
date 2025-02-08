@@ -5,10 +5,10 @@ export const useGeneralStore = defineStore("loading", {
     isLoading: false,
   }),
   actions: {
-    startLoading() {
+    startLoading(): void {
       this.isLoading = true;
     },
-    stopLoading() {
+    stopLoading(): void {
       this.isLoading = false;
     },
   },
