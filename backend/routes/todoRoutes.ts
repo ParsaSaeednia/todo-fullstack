@@ -1,11 +1,10 @@
-import express, { Router } from "express";
+import { Elysia } from "elysia";
 import TodoController from "../controllers/todoController";
 
-const router: Router = express.Router();
+const todoRoutes = new Elysia()
+  .get("/todos", TodoController.getTodos)
+  .post("/todos", TodoController.createTodo)
+  .put("/todos/:id", TodoController.updateTodo)
+  .delete("/todos/:id", TodoController.deleteTodo);
 
-router.get("/todos", TodoController.getTodos);
-router.post("/todos", TodoController.createTodo);
-router.put("/todos/:id", TodoController.updateTodo);
-router.delete("/todos/:id", TodoController.deleteTodo);
-
-export default router;
+export default todoRoutes;

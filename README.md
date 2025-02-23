@@ -95,7 +95,7 @@ This will start the backend server, listening on the configured port (I used 300
 
 - **Backend**:
   - Bun
-  - Express
+  - Elysia
   - Mongoose
 
 ## Installation
@@ -146,4 +146,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by [Parsa Saeidnia](https://github.com/ParsaSaeednia)
+Made with ❤️ by [Parsa Saeednia](https://github.com/ParsaSaeednia)

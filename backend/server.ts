@@ -1,18 +1,22 @@
-import express from "express";
-import cors from "cors";
-import todoRoutes from "./routes/todoRoutes";
+import { Elysia } from "elysia";
 import { connectDB } from "./config/db";
+import todoRoutes from "./routes/todoRoutes";
+import { cors } from "@elysiajs/cors";
 
-const app = express();
+const app = new Elysia();
 
-app.use(express.json());
-app.use(cors());
 connectDB();
-app.use("/", todoRoutes);
 
-const PORT = process.env.PORT;
-app.listen(PORT, (): void => {
-  console.log(`Server running on port ${PORT}`);
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.use(todoRoutes);
+
+app.listen(process.env.PORT ?? 3000, () => {
+  console.log(`Server running on port ${process.env.PORT ?? 3000}`);
 });
-
-export default app;

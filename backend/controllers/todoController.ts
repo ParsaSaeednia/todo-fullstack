@@ -1,26 +1,26 @@
-import type { Request, Response } from "express";
 import { Todo } from "../models/todoModel";
 
 class TodoController {
-  async getTodos(_req: Request, res: Response): Promise<void> {
-    const todos = await Todo.find();
-    res.json(todos);
+  async getTodos() {
+    return await Todo.find();
   }
 
-  async createTodo(req: Request, res: Response): Promise<void> {
-    const newTodo = new Todo(req.body);
+  async createTodo({ body }: { body: { title: string; completed?: boolean } }) {
+    const newTodo = new Todo(body);
     await newTodo.save();
-    res.json(newTodo);
+    return newTodo;
   }
 
-  async updateTodo(req: Request, res: Response): Promise<void> {
-    const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(updatedTodo);
+  async updateTodo({ params, body }: { params: { id: string }; body: { title?: string; completed?: boolean } }) {
+    const updatedTodo = await Todo.findByIdAndUpdate(params.id, body, {
+      new: true,
+    });
+    return updatedTodo;
   }
 
-  async deleteTodo(req: Request, res: Response): Promise<void> {
-    await Todo.findByIdAndDelete(req.params.id);
-    res.json({ message: "Todo deleted" });
+  async deleteTodo({ params }: { params: { id: string } }) {
+    await Todo.findByIdAndDelete(params.id);
+    return { message: "Todo deleted" };
   }
 }
 
